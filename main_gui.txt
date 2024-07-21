@@ -1,0 +1,41 @@
+from tkinter import *
+import random
+def exit():
+ window.destroy()
+def get_team():
+ tm= int(e1.get())
+ nt=int(e2.get())
+ if tm < nt:
+     print('too many teams, too few players')
+ else:
+     num = random.randint(1,nt)
+     print(num)
+ t1.config(state='normal')
+ t1.delete('1.0', tk.END)
+ t1.insert(tk.END,num)
+ t1.config(state='disabled')
+import tkinter as tk
+window = tk.Tk()
+window.geometry("400x300")
+window.config(bg="#F7DC6F")
+window.resizable(width=False,height=False)
+window.title('Team Generator App!')
+l1 = tk.Label(window,text="Generates Team !",font=("Arial", 20),fg="black",bg="#F7D");
+l_d=tk.Label(window,text="Number of team members : ",font=('Arial',12,"bold"),fg="darkgreen",bg="#F7DC6F");
+l_m=tk.Label(window,text="Number of teams: ",font=('Arial',12,"bold"),fg="darkgreen",bg="#F7DC6F");
+e1=tk.Entry(window,width=10);
+e2=tk.Entry(window,width=10);
+b1=tk.Button(window,text="Let's decide the team!",font=("Arial",13),command=get_team);
+l3 = tk.Label(window,text="The Generated is: ",font=('Arial',12,"bold"),fg="darkgreen");
+t1=tk.Text(window,width=5,height=0,state="disabled");
+b2=tk.Button(window,text="Exit Application!",font=("Arial",13),command=exit);
+l1.place(x=70,y=5);
+l_d.place(x=50,y=70);
+l_m.place(x=50,y=95);
+e1.place(x=260,y=70);
+e2.place(x=260,y=95);
+b1.place(x=100,y=150);
+l3.place(x=50,y=200);
+t1.place(x=240,y=203);
+b2.place(x=100,y=230);
+window.mainloop()
